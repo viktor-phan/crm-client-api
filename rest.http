@@ -3,12 +3,12 @@ POST  http://localhost:3001/v1/user
 Content-Type: application/json
 
 {
-"name": "John Doe",
-  "company": "Onk.inc",
-  "address": "15 JDS",
-  "phone": "1242357",
-  "email": "aaddddffzzllakkka@gmail.com",
-  "password": "122221457"
+"name": "Mariko",
+  "company": "xTT inc",
+  "address": "15 Jay St, Quincy, GA",
+  "phone": "212547621",
+  "email": "mariko15@gmail.com",
+  "password": "admin123"
 	
 }
 
@@ -18,6 +18,10 @@ POST  http://localhost:3001/v1/user/login
 Content-Type: application/json
 
 {
-  "email": "aaddddffzzllakkka@gmail.com",
-  "password": "122221457"
+  "email": "mariko15@gmail.com",
+  "password": "admin123"
 }
+
+### Get a uaser profile endpoint
+GET http://localhost:3001/v1/user/
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlrbzE1QGdtYWlsLmNvbSIsImlhdCI6MTYxNTA4MjI1NywiZXhwIjoxNjE1MTY4NjU3fQ.utvgXe40mKbcr2wWN1pdWqGqDyYo-PDyN1KNWnEa60k

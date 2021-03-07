@@ -25,7 +25,7 @@ const UserSchema = new Schema({
     type: String,
     maxlength: 50,
     require: true,
-    unique: true
+    unique: true,
   },
   password: {
     type: String,
@@ -34,17 +34,17 @@ const UserSchema = new Schema({
     require: true,
   },
   refreshJWT: {
-    token:{
+    token: {
       type: String,
       maxlength: 500,
-      default: ""
+      default: "",
     },
-  addedAt:{
-    type: Date,
-    require: true,
-    default: Date.now()
-  }
-  }
+    addedAt: {
+      type: Date,
+      require: true,
+      default: Date.now(),
+    },
+  },
 });
-    
-module.exports ={UserSchema: mongoose.model("user", UserSchema)} 
+
+module.exports = { UserSchema: mongoose.model("user", UserSchema) };

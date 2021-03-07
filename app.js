@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useFindAndModify: true,
+  useFindAndModify: false,
   useCreateIndex: true,
 });
 if (process.env.NODE_ENV !== "production") {

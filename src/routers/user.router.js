@@ -4,6 +4,9 @@ const router = express.Router();
 const { insertUser, getUserByEmail } = require("../models/user/User.model");
 const { hashPassword, comparePasswords } = require("../helpers/bcrypt.helper");
 const { createAccessJWT, createRefreshJWT } = require("../helpers/jwt.helper");
+const {
+  userAuthorization,
+} = require("../middlewares/authorization.middleware");
 router.get("/", (req, res, next) => {
   res.json({ message: "User router" });
   next();
@@ -32,8 +35,12 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Get user profile
+router.get("/", userAuthorization, (req, res) => {
+ const _id= req.userId
+
+});
 //Create new user route
-router.post("/", async (req, res) => {});
 
 //User sign in route
 router.post("/login", async (req, res) => {
@@ -55,8 +62,15 @@ router.post("/login", async (req, res) => {
       return res.json({ status: "Invalid email or password" });
     } else {
       const accessJWT = await createAccessJWT(user.email, `${user._id}`);
-      const refreshJWT = await createRefreshJWT(user.email);
-      return res.json({ message: "Log in successfully", jwt: accessJWT, refreshJWT });
+      const refreshJWT = await createRefreshJWT(user.email, `${user._id}`);
+      console.log(accessJWT);
+      console.log(refreshJWT);
+      console.log(user);
+      return res.json({
+        message: "Log in successfully",
+        jwt: accessJWT,
+        refreshJWT,
+      });
     }
   }
 });

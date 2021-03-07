@@ -7,7 +7,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 
-app.use(helmet());
+// app.use(helmet());
 app.use(cors());
 app.use(morgan("tiny"));
 

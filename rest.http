@@ -1,0 +1,23 @@
+### User sign up endpoint
+POST  http://localhost:3001/v1/user
+Content-Type: application/json
+
+{
+"name": "John Doe",
+  "company": "Onk.inc",
+  "address": "15 JDS",
+  "phone": "1242357",
+  "email": "aaddddffzzllakkka@gmail.com",
+  "password": "122221457"
+	
+}
+
+
+### User log in endpoint
+POST  http://localhost:3001/v1/user/login
+Content-Type: application/json
+
+{
+  "email": "aaddddffzzllakkka@gmail.com",
+  "password": "122221457"
+}

@@ -1,15 +1,19 @@
 const express = require("express");
 const { route } = require("./ticket.router");
 const router = express.Router();
-const { insertUser, getUserByEmail } = require("../models/user/User.model");
+const {
+  insertUser,
+  getUserByEmail,
+  getUserById,
+} = require("../models/user/User.model");
 const { hashPassword, comparePasswords } = require("../helpers/bcrypt.helper");
 const { createAccessJWT, createRefreshJWT } = require("../helpers/jwt.helper");
 const {
   userAuthorization,
 } = require("../middlewares/authorization.middleware");
-router.get("/", (req, res, next) => {
+router.get("*", (req, res, next) => {
   res.json({ message: "User router" });
-  next();
+  // next();
 });
 
 router.post("/", async (req, res) => {
@@ -36,9 +40,11 @@ router.post("/", async (req, res) => {
 });
 
 // Get user profile
-router.get("/", userAuthorization, (req, res) => {
- const _id= req.userId
-
+router.get("/", userAuthorization, async (req, res) => {
+  const _id = req.userId;
+  const userProf = await getUserById(_id);
+  //console.log(res);
+ res.status(200).json({user: userProf})
 });
 //Create new user route
 
@@ -69,7 +75,7 @@ router.post("/login", async (req, res) => {
       return res.json({
         message: "Log in successfully",
         jwt: accessJWT,
-        refreshJWT,
+        refJWT: refreshJWT,
       });
     }
   }

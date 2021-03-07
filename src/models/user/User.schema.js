@@ -33,6 +33,18 @@ const UserSchema = new Schema({
     maxlength: 100,
     require: true,
   },
+  refreshJWT: {
+    token:{
+      type: String,
+      maxlength: 500,
+      default: ""
+    },
+  addedAt:{
+    type: Date,
+    require: true,
+    default: Date.now()
+  }
+  }
 });
     
 module.exports ={UserSchema: mongoose.model("user", UserSchema)} 

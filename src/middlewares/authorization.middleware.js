@@ -17,7 +17,9 @@ const userAuthorization = async (req, res, next) => {
     return next();
   }
 
-//   deleteJWT(authorization);
+  deleteJWT(authorization);
+
+
 
   return res.status(403).json({ message: "Forbidden" });
 };

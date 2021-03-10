@@ -2,10 +2,10 @@ const redis = require("redis");
 const client = redis.createClient(process.env.REDIS_URL);
 //redis://localhost:6379
 
-client.on("error", function(error) {
-    console.error(error);
-  });
-   
+client.on("error", function (error) {
+  console.error(error);
+});
+
 const setJWT = (key, value) => {
   return new Promise((resolve, reject) => {
     try {
@@ -32,7 +32,16 @@ const getJWT = (key) => {
   });
 };
 
+const deleteJWT = (key) => {
+  try {
+    client.del(key);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   setJWT,
   getJWT,
+  deleteJWT
 };

@@ -35,11 +35,13 @@ const port = process.env.PORT || 3001;
 
 const userRouter = require("./src/routers/user.router");
 const ticketRouter = require("./src/routers/ticket.router");
+const tokensRouter = require("./src/routers/tokens.router");
 const handleError = require("./src/utils/errorHandler");
 
 //Load routers
 app.use("/v1/user", userRouter);
 app.use("/v1/ticket", ticketRouter);
+app.use("/v1/tokens", tokensRouter);
 
 //Routers
 app.use((req, res, next) => {

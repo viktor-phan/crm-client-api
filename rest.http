@@ -24,4 +24,8 @@ Content-Type: application/json
 
 ### Get a uaser profile endpoint
 GET http://localhost:3001/v1/user/
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlrbzE1QGdtYWlsLmNvbSIsImlhdCI6MTYxNTA4MjI1NywiZXhwIjoxNjE1MTY4NjU3fQ.utvgXe40mKbcr2wWN1pdWqGqDyYo-PDyN1KNWnEa60k
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlrbzE1QGdtYWlsLmNvbSIsImlhdCI6MTYxNTQwMzQ1MywiZXhwIjoxNjE1NDg5ODUzfQ.Sd2trw6ru4FIm_j9I115__c5e46s00Y7_7wUEVQoh70
+
+### Get token
+GET http://localhost:3001/v1/tokens/
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlrbzE1QGdtYWlsLmNvbSIsImlhdCI6MTYxNTQwMzQ1MywiZXhwIjoxNjE3OTk1NDUzfQ.0J5b2fJKAKADGnxIOXvn691ygEDes7DGTPmWwWmOO7E

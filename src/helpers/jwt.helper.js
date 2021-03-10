@@ -22,8 +22,9 @@ const createRefreshJWT = async (email, _id) => {
     });
     console.log(refreshJWT);
     await storeUserRefreshJWT(_id, refreshJWT);
-
+   
     return Promise.resolve(refreshJWT);
+    
   } catch (error) {
     return Promise.reject(error);
   }

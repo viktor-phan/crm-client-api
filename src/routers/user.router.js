@@ -11,10 +11,11 @@ const { createAccessJWT, createRefreshJWT } = require("../helpers/jwt.helper");
 const {
   userAuthorization,
 } = require("../middlewares/authorization.middleware");
-router.get("*", (req, res, next) => {
-  res.json({ message: "User router" });
-  // next();
-});
+
+// router.get("*", (req, res, next) => {
+//   res.json({ message: "User router" });
+//   // next();
+// });
 
 router.post("/", async (req, res) => {
   try {

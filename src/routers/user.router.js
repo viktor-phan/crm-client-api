@@ -11,7 +11,7 @@ const { createAccessJWT, createRefreshJWT } = require("../helpers/jwt.helper");
 const {
   userAuthorization,
 } = require("../middlewares/authorization.middleware");
-
+const { setPasswordResetPin } = require("../models/resetPin/resetPin.model");
 // router.get("*", (req, res, next) => {
 //   res.json({ message: "User router" });
 //   // next();
@@ -45,7 +45,7 @@ router.get("/", userAuthorization, async (req, res) => {
   const _id = req.userId;
   const userProf = await getUserById(_id);
   //console.log(res);
- res.status(200).json({user: userProf})
+  res.status(200).json({ user: userProf });
 });
 //Create new user route
 
@@ -80,6 +80,17 @@ router.post("/login", async (req, res) => {
       });
     }
   }
+});
+router.post("/reset-password", async (req, res) => {
+  const { email } = req.body;
+
+  const user = await getUserByEmail(email);
+  if (!user) {
+    const setPin = await setPasswordResetPin(email);
+    return res.json(setPin);
+    //res.json({ status: "error", message: "Wait for pin" });
+  }
+  
 });
 
 module.exports = router;

@@ -3,7 +3,7 @@ const { getJWT, deleteJWT } = require("../helpers/redis.helper");
 
 const userAuthorization = async (req, res, next) => {
   const { authorization } = req.headers;
-    
+
   const decoded = await verifyAccessJWT(authorization);
 
   if (decoded.email) {
@@ -18,8 +18,6 @@ const userAuthorization = async (req, res, next) => {
   }
 
   deleteJWT(authorization);
-
-
 
   return res.status(403).json({ message: "Forbidden" });
 };

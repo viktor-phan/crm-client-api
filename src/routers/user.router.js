@@ -18,10 +18,6 @@ const {
 } = require("../middlewares/authorization.middleware");
 const { setPasswordResetPin } = require("../models/resetPin/resetPin.model");
 const { getJWT, deleteJWT } = require("../helpers/redis.helper");
-// router.get("*", (req, res, next) => {
-//   res.json({ message: "User router" });
-//   // next();
-// });
 
 router.post("/", async (req, res) => {
   try {
@@ -87,6 +83,7 @@ router.post("/login", async (req, res) => {
     }
   }
 });
+//Getting the pin to reset password
 router.post("/reset-password", async (req, res) => {
   const { email } = req.body;
 
@@ -96,7 +93,7 @@ router.post("/reset-password", async (req, res) => {
     return res.json(setPin);
   }
 });
-
+//Logout of a session
 router.delete("/logout", userAuthorization, async (req, res) => {
   const { authorization } = req.headers;
   const decoded = await verifyAccessJWT(authorization);
@@ -104,12 +101,13 @@ router.delete("/logout", userAuthorization, async (req, res) => {
     const userId = await getJWT(authorization);
     if (!userId) {
       return res.json({ message: "Forbidden" });
-    }
-    
-    deleteJWT(authorization);
+    } else {
+      deleteJWT(authorization);
 
-    const result = storeUserRefreshJWT(userId, '');
-    return res.json({ message: "Log out succesfully" });
+      const result = storeUserRefreshJWT(userId, "");
+      return res.json({ message: "Log out succesfully" });
+    }
+    res.json({ message: "Error, cannot log out" });
   }
 });
 

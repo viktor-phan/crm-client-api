@@ -22,7 +22,7 @@ Content-Type: application/json
   "password": "admin123"
 }
 
-### Get a uaser profile endpoint
+### Get a user profile endpoint
 GET http://localhost:3001/v1/user/
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlrbzE1QGdtYWlsLmNvbSIsImlhdCI6MTYxNTQyNzAyNSwiZXhwIjoxNjE1NTEzNDI1fQ.46CaZJtQG8TzvATmOW4-0Gm9e_XqROY7CFL4vBWAVXY
 
@@ -41,4 +41,16 @@ Content-Type: application/json
 
 ### User logout endpoint
 DELETE http://localhost:3001/v1/user/logout
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlrbzE1QGdtYWlsLmNvbSIsImlhdCI6MTYxNTQyNzM3MywiZXhwIjoxNjE1NTEzNzczfQ.r_etqn4o-DzrEmjZVxcYob1TwtBXTX6wR6gPfYxyIyc
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlrbzE1QGdtYWlsLmNvbSIsImlhdCI6MTYxNTQzMDQ5NCwiZXhwIjoxNjE1NTE2ODk0fQ.HsnJ7UbgfD2TojklGHz-UZyb247FYM9lZoR5FxxPCTM
+
+
+
+### Create ticket
+POST http://localhost:3001/v1/ticket/
+Content-Type: application/json
+
+{
+	"subject": "Cannot get API",
+	"sender": "Thang",
+	"message": "I want to learn to learn to learn"
+}

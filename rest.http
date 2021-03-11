@@ -24,8 +24,21 @@ Content-Type: application/json
 
 ### Get a uaser profile endpoint
 GET http://localhost:3001/v1/user/
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlrbzE1QGdtYWlsLmNvbSIsImlhdCI6MTYxNTQwMzQ1MywiZXhwIjoxNjE1NDg5ODUzfQ.Sd2trw6ru4FIm_j9I115__c5e46s00Y7_7wUEVQoh70
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlrbzE1QGdtYWlsLmNvbSIsImlhdCI6MTYxNTQyNzAyNSwiZXhwIjoxNjE1NTEzNDI1fQ.46CaZJtQG8TzvATmOW4-0Gm9e_XqROY7CFL4vBWAVXY
 
 ### Get token
 GET http://localhost:3001/v1/tokens/
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlrbzE1QGdtYWlsLmNvbSIsImlhdCI6MTYxNTQwMzQ1MywiZXhwIjoxNjE3OTk1NDUzfQ.0J5b2fJKAKADGnxIOXvn691ygEDes7DGTPmWwWmOO7E
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlrbzE1QGdtYWlsLmNvbSIsImlhdCI6MTYxNTQyNzEwMSwiZXhwIjoxNjE1NTEzNTAxfQ.MReOJieQtXhPSMSc-OQgJP8s7Rk9LaK3_vzLc4lMHak
+
+###
+POST  http://localhost:3001/v1/user/reset-password
+Content-Type: application/json
+
+{
+  "email": "mariko1@gmail.com"
+}
+
+
+### User logout endpoint
+DELETE http://localhost:3001/v1/user/logout
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlrbzE1QGdtYWlsLmNvbSIsImlhdCI6MTYxNTQyNzM3MywiZXhwIjoxNjE1NTEzNzczfQ.r_etqn4o-DzrEmjZVxcYob1TwtBXTX6wR6gPfYxyIyc

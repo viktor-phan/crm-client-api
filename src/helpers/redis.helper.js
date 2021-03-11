@@ -33,11 +33,16 @@ const getJWT = (key) => {
 };
 
 const deleteJWT = (key) => {
-  try {
-    client.del(key);
-  } catch (error) {
-    console.log(error);
-  }
+  return new Promise((resolve, reject) => {
+    try {
+      client.del(key, (err, res) => {
+        if (err) reject(err);
+        resolve(res);
+      });
+    } catch (error) {
+      reject(error);
+    }
+  });
 };
 
 module.exports = {

@@ -65,9 +65,12 @@ const storeUserRefreshJWT = (_id, token) => {
     }
   });
 };
+
+
 module.exports = {
   insertUser,
   getUserByEmail,
   storeUserRefreshJWT,
   getUserById,
+
 };

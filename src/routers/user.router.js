@@ -5,13 +5,19 @@ const {
   insertUser,
   getUserByEmail,
   getUserById,
+  storeUserRefreshJWT,
 } = require("../models/user/User.model");
 const { hashPassword, comparePasswords } = require("../helpers/bcrypt.helper");
-const { createAccessJWT, createRefreshJWT } = require("../helpers/jwt.helper");
+const {
+  createAccessJWT,
+  createRefreshJWT,
+  verifyAccessJWT,
+} = require("../helpers/jwt.helper");
 const {
   userAuthorization,
 } = require("../middlewares/authorization.middleware");
 const { setPasswordResetPin } = require("../models/resetPin/resetPin.model");
+const { getJWT, deleteJWT } = require("../helpers/redis.helper");
 // router.get("*", (req, res, next) => {
 //   res.json({ message: "User router" });
 //   // next();
@@ -88,9 +94,23 @@ router.post("/reset-password", async (req, res) => {
   if (!user) {
     const setPin = await setPasswordResetPin(email);
     return res.json(setPin);
-    //res.json({ status: "error", message: "Wait for pin" });
   }
-  
+});
+
+router.delete("/logout", userAuthorization, async (req, res) => {
+  const { authorization } = req.headers;
+  const decoded = await verifyAccessJWT(authorization);
+  if (decoded.email) {
+    const userId = await getJWT(authorization);
+    if (!userId) {
+      return res.json({ message: "Forbidden" });
+    }
+    
+    deleteJWT(authorization);
+
+    const result = storeUserRefreshJWT(userId, '');
+    return res.json({ message: "Log out succesfully" });
+  }
 });
 
 module.exports = router;

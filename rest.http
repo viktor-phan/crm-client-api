@@ -19,7 +19,7 @@ Content-Type: application/json
 
 {
   "email": "mariko15@gmail.com",
-  "password": "admin123"
+  "password": "admin"
 }
 
 ### Get a user profile endpoint
@@ -35,13 +35,13 @@ POST  http://localhost:3001/v1/user/reset-password
 Content-Type: application/json
 
 {
-  "email": "mariko1@gmail.com"
+  "email": "mariko15@gmail.com"
 }
 
 
 ### User logout endpoint
 DELETE http://localhost:3001/v1/user/logout
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlrbzE1QGdtYWlsLmNvbSIsImlhdCI6MTYxNTQzMDQ5NCwiZXhwIjoxNjE1NTE2ODk0fQ.HsnJ7UbgfD2TojklGHz-UZyb247FYM9lZoR5FxxPCTM
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlrbzE1QGdtYWlsLmNvbSIsImlhdCI6MTYxNTUxMjE2MCwiZXhwIjoxNjE1NTk4NTYwfQ.JbQSGCftU_2KBDQj3UtweKLWeeGMYn1Mnw9-UgEeU4c
 
 
 

@@ -7,11 +7,15 @@ const {
   getTicketbyId,
   updateClientReply,
   updateStatusClose,
-  deleteTicket
+  deleteTicket,
 } = require("../models/ticket/Ticket.model");
 const {
   userAuthorization,
 } = require("../middlewares/authorization.middleware");
+
+const {
+  createNewTicketValidation,
+} = require("../middlewares/formValidation.middleware");
 const { deleteJWT } = require("../helpers/redis.helper");
 const router = express.Router();
 
@@ -43,26 +47,31 @@ router.get("/:ticketId", userAuthorization, async (req, res) => {
 });
 
 //Create a ticket
-router.post("/", userAuthorization, async (req, res) => {
-  const { subject, sender, message } = req.body;
-  const userId = req.userId;
-  const ticketObj = {
-    clientId: userId,
-    subject,
-    sender,
-    conversations: [
-      {
-        sender,
-        message,
-      },
-    ],
-  };
-  const result = await insertTicket(ticketObj);
-  if (result._id) {
-    return res.json({ message: "Create success" });
+router.post(
+  "/",
+  createNewTicketValidation,
+  userAuthorization,
+  async (req, res) => {
+    const { subject, sender, message } = req.body;
+    const userId = req.userId;
+    const ticketObj = {
+      clientId: userId,
+      subject,
+      sender,
+      conversations: [
+        {
+          sender,
+          message,
+        },
+      ],
+    };
+    const result = await insertTicket(ticketObj);
+    if (result._id) {
+      return res.json({ message: "Create success" });
+    }
+    res.json({ message: "Error" });
   }
-  res.json({ message: "Error" });
-});
+);
 
 //Update ticket when comment
 router.put("/:_id", async (req, res) => {
@@ -70,7 +79,7 @@ router.put("/:_id", async (req, res) => {
     const { _id } = req.params;
     const clientId = req.userId;
     const { sender, message } = req.body;
-    const result = await updateClientReply({ _id, clientId});
+    const result = await updateClientReply({ _id, clientId });
 
     if (result._id) {
       return res.json({
@@ -121,7 +130,7 @@ router.delete("/:_id", userAuthorization, async (req, res) => {
   try {
     const { _id } = req.params;
     const clientId = req.userId;
-  
+
     const result = await deleteTicket({ _id, clientId });
 
     return res.json({

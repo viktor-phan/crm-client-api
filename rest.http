@@ -24,7 +24,8 @@ Content-Type: application/json
 
 ### Get a user profile endpoint
 GET http://localhost:3001/v1/user/
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlrbzE1QGdtYWlsLmNvbSIsImlhdCI6MTYxNTQyNzAyNSwiZXhwIjoxNjE1NTEzNDI1fQ.46CaZJtQG8TzvATmOW4-0Gm9e_XqROY7CFL4vBWAVXY
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlrbzE1QGdtYWlsLmNvbSIsImlhdCI6MTYxNjAyNDc0NSwiZXhwIjoxNjE2MTExMTQ1fQ.qbTdp2LG7GEGbPkaNdi_TghSiQqsjoHycLOAMj229vc
+   
 
 ### Get token
 GET http://localhost:3001/v1/tokens/
@@ -41,7 +42,7 @@ Content-Type: application/json
 
 ### User logout endpoint
 DELETE http://localhost:3001/v1/user/logout
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlrbzE1QGdtYWlsLmNvbSIsImlhdCI6MTYxNTUxMjE2MCwiZXhwIjoxNjE1NTk4NTYwfQ.JbQSGCftU_2KBDQj3UtweKLWeeGMYn1Mnw9-UgEeU4c
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6I…TQ1fQ.qbTdp2LG7GEGbPkaNdi_TghSiQqsjoHycLOAMj229vc
 
 
 
@@ -50,8 +51,9 @@ POST http://localhost:3001/v1/ticket/
 Content-Type: application/json
 
 {
-	"subject": "Cannot get API",
+	"subject": "Client failed to communicate",
 	"sender": "Thang",
-	"message": "I want to learn to learn to learn"
+	
+  "message": "Unfulfilled"
 }
 

@@ -42,7 +42,7 @@ router.post("/", async (req, res) => {
     };
 
     const result = await insertUser(newUserObj);
-    console.log(result);
+    // console.log(result);
     res.json(result);
   } catch (error) {
     res.json({ message: error.message, status: "error" });
@@ -53,8 +53,11 @@ router.post("/", async (req, res) => {
 router.get("/", userAuthorization, async (req, res) => {
   const _id = req.userId;
   const userProf = await getUserById(_id);
+  const {name, email} = userProf
   //console.log(res);
-  res.status(200).json({ user: userProf });
+  res.status(200).json({ user: {
+    _id, name, email
+  } });
 });
 //Create new user route
 
